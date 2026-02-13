@@ -1,0 +1,42 @@
+---
+title: "Assignment 3B: Window Functions"
+author: "Muhammad Suffyan Khan"
+format: html
+editor: visual
+date: "2026-02-12"
+execute:
+  echo: true
+---
+
+## Objective
+
+The goal of this assignment is to apply window functions to time-series data for multiple items in order to compute year-to-date (YTD) averages and six day moving averages.
+
+## Dataset
+
+I will use daily stock price time-series data for multiple companies (for example, AAPL and MSFT) starting from January 1, 2022. The data will initially be retrieved using the `tidyquant` package in R, which provides access to historical stock prices from Yahoo Finance.
+
+To ensure reproducibility, the retrieved dataset will be saved as a CSV file and stored in the GitHub repository. The analysis will then be performed using this saved dataset rather than relying on live data retrieval.
+
+The dataset will include at least the following fields:
+
+-   symbol
+-   date
+-   close
+
+## Workflow Plan
+
+The workflow for this assignment will include the following steps:
+
+1.  Retrieve daily stock price data for two or more tickers since 2022-01-01.
+2.  Save the dataset to a CSV file for reproducibility.
+3.  Load the dataset into R for analysis.
+4.  Use dplyr window functions grouped by symbol and ordered by date.
+5.  Compute:
+    - Year-to-date (YTD) average closing price using cumulative averages (group by symbol + year).
+    - Six-day moving average closing price using rolling window calculations (group by symbol).
+6.  Verify results using summaries or simple visualizations.
+
+## Anticipated Challenges
+
+Stock market data does not include weekends and holidays, so the six day moving average will be calculated using the last six available trading days. Another consideration is ensuring that the year-to-date calculation resets correctly at the beginning of each calendar year.
